@@ -1,0 +1,380 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <title>CSS3 Selector</title>
+    <style>
+      /* 태그(요소) 선택자 */
+      body {
+        width: 100%;
+      }
+      header {
+        text-align: center;
+        color: white;
+      }
+      a {
+        text-decoration: none;
+        color: white;
+      }
+      /* 아이디 선택자 */
+      #wrapper {
+        width: 60%;
+        margin: 0 auto;
+      }
+      /* 클래스 선택자 */
+      .my-name {
+        font-weight: 400;
+      }
+
+      /* 후손 및 자손 선택자 */
+      #nav {
+        text-align: center;
+      }
+      #nav ul {
+        list-style: none;
+      }
+      #nav li {
+        display: inline-block;
+        vertical-align: middle;
+
+        /* 박스 속성 */
+        margin: 0 0.35em;
+        padding: 0;
+      }
+      #nav > ul > li > a {
+        display: inline-block;
+        color: rgb(99, 99, 99);
+
+        /* 박스 속성 */
+        height: 2.25em; /* 36px */
+        line-height: 2.25em; /* 36px */
+        padding: 0 1.25em; /* 20px */
+        border: 0;
+        border-radius: 8px;
+      }
+      /* 구조 선택자 */
+      /* #nav li:nth-child(2n + 1) {
+        background-color: rgb(250, 250, 250);
+      }
+      #nav li:nth-child(2n) {
+        background-color: rgb(230, 230, 230);
+      } */
+      /* 박스 속성 */
+      #header {
+        padding: 5em 3em 2em 3em;
+      }
+      #header p {
+        margin: 0 0 2em 0;
+      }
+      #nav {
+        color: #636363;
+        width: calc(100% - (1em * 2)); /* 계산식을 사용 */
+        padding: 1em;
+        background-color: #f7f7f7;
+        border-top-left-radius: 0.25em;
+        border-top-right-radius: 0.25em;
+        text-align: center;
+      }
+      #section {
+        background-color: #fcfcfc;
+        color: #636363;
+        border-bottom-left-radius: 0.25em;
+        border-bottom-right-radius: 0.25em;
+      }
+      #section section {
+        min-height: 400px;
+        border-bottom: #c0c0c0 solid 1px;
+        padding: 2em;
+      }
+      #section section:nth-last-child(1) {
+        border-bottom: none;
+      }
+      #footer {
+        padding: 4em 3em 2em 3em;
+        display: block;
+        margin: 0 0 3em 0;
+        width: calc(100% - (3em * 2)); /* 계산식을 사용 */
+      }
+      /* 가시 속성 */
+      #header .logo {
+        /* display: none; */
+        /* display: block; */
+        /* visibility: hidden; */
+        /* visibility: visible; */
+      }
+      /* 배경 속성 */
+      /* #section #intro {
+        background-color: red;
+      }
+      #section #intro {
+        background-image: url("bg.jpg");
+      }
+      #section #intro {
+        background-size: auto;
+        background-size: 200px 200px;
+        background-repeat: repeat;
+        background-repeat: no-repeat;
+      }
+      #section #intro {
+        background-attachment: fixed;
+        background-attachment: scroll;
+        background-position: top;
+      } */
+      /* 글자 속성 */
+      /* .my-name {
+        font-family: serif;
+        font-family: sans-serif;
+      }
+      #header > p {
+        font-weight: 800;
+        font-weight: 300;
+        font-style: italic;
+        text-align: left;
+        text-align: center;
+        text-align: right;
+      }
+      .lineheight-test {
+        width: 150px;
+        height: 40px;
+        margin: 50px auto;
+        border-radius: 10px;
+        border: rgb(200, 200, 200) solid 1px;
+        text-align: center;
+        line-height: 40px;
+      } */
+      /* 유동 속성 */
+      #intro svg {
+        float: left;
+        margin: 2em;
+      }
+      #intro p {
+        font-size: 1.1em;
+        line-height: 1.5em;
+      }
+      /* gradient */
+      body {
+        /* Permalink - use to edit and share this gradient:
+        https://colorzilla.com/gradient-editor/#cb60b3+0,ad1283+25,6e3ab7+100 */
+        background: #cb60b3; /* Old browsers */
+        background: -moz-linear-gradient(
+          -45deg,
+          #cb60b3 0%,
+          #ad1283 25%,
+          #6e3ab7 100%
+        ); /* FF3.6-15 */
+        background: -webkit-linear-gradient(
+          -45deg,
+          #cb60b3 0%,
+          #ad1283 25%,
+          #6e3ab7 100%
+        ); /* Chrome10-25,Safari5.1-6 */
+        background: linear-gradient(
+          135deg,
+          #cb60b3 0%,
+          #ad1283 25%,
+          #6e3ab7 100%
+        ); /* W3C, IE10+, FF16+, Chrome26+, Opera12+, Safari7+ */
+        filter: progid:DXImageTransform.Microsoft.gradient(
+          startColorstr='#cb60b3',
+          endColorstr='#6e3ab7',
+          GradientType=1 ); /* IE6-9 fallback on horizontal gradient */
+      }
+    </style>
+  </head>
+  <body>
+    <div id="wrapper">
+      <header id="header">
+        <h1 class="my-name">Sim Kun Jung</h1>
+        <span class="logo">
+          <!-- https://materialdesignicons.com -->
+          <svg
+            style="width: 80px; height: 80px; color: skyblue"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M12 3C14.21 3 16 4.79 16 7S14.21 11 12 11 8 9.21
+              8 7 9.79 3 12 3M16 13.54C16 14.6 15.72 17.07 13.81
+              19.83L13 15L13.94 13.12C13.32 13.05 12.67 13 12
+              13S10.68 13.05 10.06 13.12L11 15L10.19 19.83C8.28
+              17.07 8 14.6 8 13.54C5.61 14.24 4 15.5 4 17V21H20V17C20
+              15.5 18.4 14.24 16 13.54Z"
+            />
+          </svg>
+        </span>
+        <p>
+          숭실대학교 글로벌미디어학부,
+          <a href="http://ssu.ac.kr">@SoongSil Univ.</a><br />
+          웹 프로그래밍 및 실습 겸임교수
+        </p>
+      </header>
+      <nav id="nav">
+        <ul>
+          <li><a href="#intro">Introduction</a></li>
+          <li><a href="#first">First Section</a></li>
+          <li><a href="#second">Second Section</a></li>
+          <li><a href="#contact">Contact Section</a></li>
+        </ul>
+      </nav>
+      <section id="section">
+        <!-- Introduction -->
+        <section id="intro">
+          <!-- <div class="lineheight-test">Intro Section</div> -->
+          <!-- <div class="pos-box"></div>
+          <div class="pos-box"></div>
+          <div class="pos-box"></div> -->
+          <svg
+            style="width: 80px; height: 80px; color: skyblue"
+            viewBox="0 0 24 24"
+          >
+            <path
+              fill="currentColor"
+              d="M12 3C14.21 3 16 4.79 16 7S14.21 11 12 11 8 9.21
+              8 7 9.79 3 12 3M16 13.54C16 14.6 15.72 17.07 13.81
+              19.83L13 15L13.94 13.12C13.32 13.05 12.67 13 12
+              13S10.68 13.05 10.06 13.12L11 15L10.19 19.83C8.28
+              17.07 8 14.6 8 13.54C5.61 14.24 4 15.5 4 17V21H20V17C20
+              15.5 18.4 14.24 16 13.54Z"
+            />
+          </svg>
+          <!-- https://www.lipsum.com -->
+          <p>
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Vestibulum
+            pulvinar, libero id viverra elementum, elit metus iaculis turpis,
+            sit amet tristique magna nulla vel tortor. Nulla congue ligula
+            ipsum, a volutpat tellus placerat sit amet. Pellentesque habitant
+            morbi tristique senectus et netus et malesuada fames ac turpis
+            egestas. Aenean malesuada vestibulum neque, ac finibus sem tempus
+            vestibulum. Cras viverra, nulla quis fringilla venenatis, tortor
+            tellus auctor lorem, non iaculis ex magna at libero. Fusce aliquam
+            sed turpis eu sodales. Cras vitae venenatis diam. Nullam tempus
+            hendrerit felis. Nulla diam sapien, aliquam vel est congue, pulvinar
+            tincidunt libero. Nam odio nulla, rutrum laoreet elementum ac,
+            vulputate a lorem.
+          </p>
+          <p>
+            Curabitur lobortis elit nunc. Fusce pulvinar condimentum ex, ut
+            vulputate erat lacinia et. Interdum et malesuada fames ac ante ipsum
+            primis in faucibus. Nulla a rhoncus orci. Praesent posuere dignissim
+            nisi quis dignissim. Donec sapien sem, rhoncus vel euismod nec,
+            tempus in lacus. Quisque nec mi tellus. Nam consectetur suscipit ex.
+            Pellentesque convallis leo non laoreet aliquet. Donec finibus felis
+            sed cursus dictum. Pellentesque habitant morbi tristique senectus et
+            netus et malesuada fames ac turpis egestas. Pellentesque non orci
+            eros.
+          </p>
+          <p>
+            Vestibulum eget consequat nisl. Ut interdum risus velit, eget
+            pulvinar odio scelerisque ut. Nam viverra nunc et justo ultrices
+            consectetur. Interdum et malesuada fames ac ante ipsum primis in
+            faucibus. Morbi fringilla posuere enim, eu efficitur magna. In
+            convallis sem vitae velit pulvinar fermentum. Ut facilisis in odio
+            et luctus. Donec vel nulla mauris. Vestibulum vulputate risus vitae
+            odio tempus, et volutpat erat accumsan. Vestibulum ante ipsum primis
+            in faucibus orci luctus et ultrices posuere cubilia curae;
+            Suspendisse eget tristique dui, at facilisis leo. Morbi quis
+            imperdiet mauris. Donec in nunc nunc.
+          </p>
+          <p>
+            Nullam massa ante, vulputate feugiat consectetur quis, finibus vitae
+            velit. Mauris a fringilla ipsum. Praesent tincidunt at nisl
+            sollicitudin convallis. Cras eu eros a odio faucibus placerat. Cras
+            semper condimentum justo. Maecenas viverra varius ex vel pretium. Ut
+            ut dignissim arcu, quis blandit purus. Orci varius natoque penatibus
+            et magnis dis parturient montes, nascetur ridiculus mus. Nullam ut
+            libero id tortor faucibus lobortis. In nec varius elit. Curabitur at
+            magna in metus lobortis mattis. Fusce a finibus diam.
+          </p>
+          <p>
+            Pellentesque imperdiet, nunc nec tincidunt luctus, eros massa
+            venenatis elit, eu luctus massa lorem eget nisi. Nulla pharetra
+            ipsum et risus eleifend varius. Nulla facilisi. Etiam convallis nibh
+            ex, rutrum aliquet tortor sagittis id. Fusce id mi pretium, aliquam
+            velit nec, ullamcorper turpis. Praesent rhoncus venenatis diam ac
+            mollis. Duis imperdiet risus a mattis efficitur. Aliquam erat
+            volutpat. Maecenas mollis sollicitudin porta. Donec augue orci,
+            aliquam vel risus eget, convallis laoreet sapien. Fusce tincidunt
+            eros augue, eu hendrerit arcu ornare a. Ut dapibus, neque non
+            malesuada euismod, leo ligula mollis lectus, non rutrum lorem eros
+            sit amet neque. Vestibulum ante ipsum primis in faucibus orci luctus
+            et ultrices posuere cubilia curae;
+          </p>
+        </section>
+
+        <!-- First Section -->
+        <section id="first">
+          <div style="text-align:center; font-size:35px; font-weight: 400;padding-top:100px;">
+          Front-end Skills
+          </div>
+          <div style="padding-top:20px; border-bottom:#ad1283 solid 1px;width:20%; margin: 0 auto;"></div>
+          <div style="text-align: center;padding-top:80px;overflow:hidden">
+            <div style="float:left;width:33%">
+              <h1
+                style="
+                  width:150px;
+                  height:150px;
+                  margin: 0 auto;
+                  background-color:lightcoral;
+                  color:white;
+                  border-radius:50% 50%;
+                  line-height: 160px;">
+                HTML5  
+                </h1>
+                <h4 style="overflow:hidden; font-weight:400">
+                  HTML5는 웹 페이지에서 <br /> 구조를 담당합니다. 
+                </h4>
+            </div>
+                <div style="float:left; width:34%">
+                  <h1
+                    style="
+                      width:150px;
+                      height:150px;
+                      margin: 0 auto;
+                      background-color:lightcoral;
+                      color:white;
+                      border-radius:50% 50%;
+                      line-height: 160px;">
+                    CSS3
+                    </h1>
+                    <h4 style="overflow:hidden; font-weight:400">
+                      CSS3는 웹 페이지에서 <br />아름답게 꾸며줍니다. 
+                    </h4>
+                </div>
+                <div style="float:left; width:33%">
+                  <h1
+                    style="
+                      width:150px;
+                      height:150px;
+                      margin: 0 auto;
+                      background-color:lightcoral;
+                      color:white;
+                      border-radius:50% 50%;
+                      line-height: 160px;">
+                    JAVASCRIPT
+                    </h1>
+                    <h4 style="overflow:hidden; font-weight:400">
+                      JAVESCRIPT는 웹 페이지에서 <br />역동적으로 만들어줍니다. 
+                    </h4>
+                </div>
+          </div>
+          <div 
+            style="text-align:center; 
+            width:150px;
+            height:40px;
+            margin:50px auto; 
+            line-height: 40px; 
+            border-radius: 10px; 
+            border:rgb(200,200,200) solid 1px">
+            Front-end
+            </div>
+        </section>
+
+        <!-- Second Section -->
+        <section id="second"></section>
+
+        <!-- Contact -->
+        <section id="contact"></section>
+      </section>
+      <footer id="footer"></footer>
+    </div>
+  </body>
+</html>
